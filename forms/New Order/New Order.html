@@ -1,0 +1,268 @@
+<html>
+<head>
+<link type="text/css" rel="stylesheet"
+	href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+<script type="text/javascript"
+	src="/portal/resources/js/jquery/jquery.js"></script>
+<script type="text/javascript"
+	src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="/portal/resources/js/mustache/mustache-min.js"></script>
+<script type="text/javascript"
+	src="/portal/resources/style-guide/js/fluig-style-guide.min.js"
+	charset="utf-8"></script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+
+			<div class='panel panel-primary'>
+
+				<div class='panel-heading'>
+					<h3 class='panel-title'>
+						<i class='fluigicon fluigicon-shopping-cart icon-md'></i> Pedido de Compra - Limpeza
+					</h3>
+				</div>
+
+				<div class='panel-body'>
+					<div class='row'>
+						<div class='form-group col-md-4'>
+							<label for='provider'>Fornecedor:</label> 
+							<input type='text' id='provider' name='provider' 
+								class='form-control'>
+						</div>
+						
+						<div class='form-group col-md-4'>
+							<label for='buyer'>Comprador:</label> 
+							<input type='text' id='buyer' name='buyer' 
+								class='form-control'>
+						</div>
+						
+						<div class='form-group col-md-3'>
+							<label for='approver'>Aprovador:</label>
+							<input type="zoom" id="approver" name="approver"
+								data-zoom="{
+						        'displayKey':'colleagueId',
+						        'datasetId':'colleague',
+						        'placeholder':'Escolha o usuário',
+						        'fields':[
+						            {
+						                'field':'colleagueName',
+						                'label':'Nome',
+						                'standard':'true'
+						            }
+						        ]
+					        }" />
+						</div>
+					</div>
+
+					<div class='row'>
+						<div class='form-group col-md-4'>
+							<label for='vessel'>Embarcação:</label> 
+							<input type='text' id='vessel' name='vessel' 
+								class='form-control'>
+						</div>
+
+						<div class='form-group col-md-2'>
+							<label for='orderDate'>Data do Pedido:</label> 
+							<input type='date' id='orderDate' name='orderDate' 
+								class='form-control'>
+						</div>
+
+						<div class='form-group col-md-2'>
+							<label for='deliveryDate'>Data de Entrega:</label> 
+							<input type='date' id='deliveryDate' name='deliveryDate' 
+								class='form-control'>
+						</div>
+						
+						<div class='form-group col-md-3'>
+							<label for='po'>PO nº:</label> 
+							<input type='text' id='po'name='po' 
+								class='form-control'>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class='panel panel-primary measureReportPanel'>
+				<div class='panel-heading'>
+					<h3 class='panel-title'>
+						<i class='fluigicon fluigicon-stats icon-md'></i> Relatório de Medição
+					</h3>
+				</div>
+
+				<div class='panel-body'>
+					<div class='row'>
+						<div class='form-group col-md-4'>
+							<label for='issuedBy'>Emitido por:</label> <input type='text'
+								id='issuedBy' name='issuedBy' class='form-control'>
+						</div>
+
+						<div class='form-group col-md-2'>
+							<label for='fiscalNote'>Nota Fiscal:</label> <input type='text'
+								id='fiscalNote' name='fiscalNote' class='form-control'>
+						</div>
+
+						<div class='form-group col-md-2'>
+							<label for='measureReport'>Relatório Medição:</label> <input type='text' 
+								id='measureReport' name='measureReport' class='form-control'>
+						</div>
+					</div>
+
+					<div class='row'>
+						<div class='form-group col-md-4'>
+							<label for='comments'>Comentários:</label> <input type='text'
+								id='comments' name='comments' class='form-control'>
+						</div>
+
+						<div class='form-group col-md-2'>
+							<label for='issueDate'>Data de Emissão:</label> <input type='date' 
+								id='issueDate' name='issueDate' class='form-control'>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class='panel panel-primary'>
+				<div class='panel-heading'>
+					<h3 class='panel-title'>
+						<i class='fluigicon fluigicon-box icon-md'></i> Produtos
+					</h3>
+				</div>
+
+				<div class='panel-body'>
+					<div class='row'>
+						<div class='form-group col-md-2'>
+							<label for='code'>Código</label> 
+							<input type='text' id='code' name='code' 
+								class='form-control'>
+						</div>
+
+						<div class='form-group col-md-3'>
+							<label for='name'>Nome Fantasia</label> 
+							<input type='text' id='name' name='name' 
+								class='form-control'>
+						</div>
+
+						<div class='form-group col-md-1'>
+							<label for='um'>UM</label> 
+							<input type='text' id='um' name='um'
+								class='form-control'>
+						</div>
+
+						<div class='form-group col-md-1'>
+							<label for='amount'>Quantidade</label> 
+							<input type='number' id='amount' name='amount' 
+								class='form-control'>
+						</div>
+
+						<div class='form-group col-md-2'>
+							<label for='price'>Preço</label> 
+							<input type='number' id='price' name='price'
+								class='form-control'>
+						</div>
+
+						<div class='form-group col-md-2'>
+							<label for='totalPrice'>Preço Total</label> 
+							<input type='text' id='totalPrice' name='totalPrice'
+								class='form-control' readonly>
+						</div>
+						<div class='form-group col-md-1'>
+							<div class='row'>
+								<label for='addProduct'>Adicionar</label>
+							</div>
+							<div class='row'>
+								<button type='button' id='addProduct' name='addProduct'
+									class='btn btn-info' onclick='addChild()'>+</button>
+							</div>
+						</div>
+					</div>
+
+
+					<table id='tableProducts' tablename="tableProducts"
+						class="table template_datatable table-bordered table-condensed table-responsive"
+						nodeletebutton=true noaddbutton=true>
+						<thead>
+							<tr>
+								<td style="text-align: center" class='removeColumn'>Remover</td>
+								<td style="text-align: center">Código</td>
+								<td style="text-align: center">Nome Fantasia</td>
+								<td style="text-align: center">UM</td>
+								<td style="text-align: center">Quantidade</td>
+								<td style="text-align: center">Preço</td>
+								<td style="text-align: center">Preço Total</td>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr>
+								<td class='removeColumn' style="text-align: center"><button type='button' id="deleteProduct" name="deleteProduct"
+									class='btn btn-info deleteProduct' onclick='deleteChild(this)'>-</button></td>
+								<td><input type='text' id="inputCode" name="inputCode"
+									class='form-control inputCode' readonly></td>
+								<td><input type='text' id="inputName"   name="inputName"
+									class='form-control' readonly></td>
+								<td><input type='text' id="inputUm" name="inputUm"
+									class='form-control' readonly></td>
+								<td><input type='number' id="inputAmount" name="inputAmount"
+									class='form-control inputAmount' onchange="changeTotal(this)" readonly></td>
+								<td><input type='number' id="inputPrice" name="inputPrice"
+									class='form-control inputPrice' onchange="changeTotal(this)" readonly></td>
+								<td><input type='text' id="inputTotalPrice" name="inputTotalPrice"
+									class='form-control' readonly></td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<div class='row'>
+						<div class='form-group col-md-2'>
+							<label for='totalValue'>Valor Total</label> 
+							<input type='text'
+								id='totalValue' name='totalValue' class='form-control' readonly>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+
+			<div class='panel panel-primary approvePanel'>
+				<div class='panel-heading'>
+					<h3 class='panel-title'>
+						<i class='fluigicon fluigicon-verified icon-md'></i> Aprovação
+					</h3>
+				</div>
+
+				<div class='panel-body'>
+					<div class='row'>
+						<div class='form-group col-md-6'>
+							<label for='observations'>Observações:</label>
+							<textarea rows="5" id="observations" name="observations" class="form-control"></textarea>
+						</div>
+						
+						<div class='form-group col-md-6'>
+							<label for='approve'>Aprovado?:</label>
+							<div class="radio">
+								<label><input class="radio-button" type="radio" id="yes" name="approve" value="sim">Sim</label>
+								<label><input class="radio-button" type="radio" id="no" name="approve" value="nao">Não</label>
+								<label><input class="radio-button" type="radio" id="adjust" name="approve" value="ajustar">Ajustar</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<button type='button' id="download" name="download" onclick='downloadFile()'>Baixar</button>
+
+		</form>
+	</div>
+</body>
+
+<script type='text/javascript' src='totalPrice.js'></script>
+<script type='text/javascript' src='listProducts.js'></script>
+<script type='text/javascript' src='excelFile.js'></script>
+<script type='text/javascript' src='showOrHide.js'></script>
+<script type='text/javascript' src='currentDate.js'></script>
+
+</html>
